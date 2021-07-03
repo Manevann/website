@@ -86,7 +86,7 @@ I've included the must-have attributes in the snippet above, but there are more 
 
 At the end of the day, we usually want to access both order details and product data such as pricing, discounts and assets from different places in our frontend application, so it makes sense to encapsulate the complexity of dealing with this library inside a [vuex module](https://vuex.vuejs.org/guide/modules.html).
 
-![diagram showing the nuxt, vuex and fastspring dependencies](./fastspring-vuex-arch.png)
+![diagram showing the nuxt, vuex and fastspring dependencies](/articles/fastspring-vuex-arch.png)
 
 To achieve this, I've used this simple component that is added to the layouts that I want a store integration on:
 
