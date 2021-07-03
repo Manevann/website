@@ -3,28 +3,28 @@ title: Building Modern Storefronts with Fastspring
 subtitle: The no-nonsense opinionated guide to making great online stores
 ---
 
-Let's start by asking the most important question; why should I even use Fastspring?
-If you're like me, you probably have the following headache (or you will in the near future):
+Let's start by asking the most important question; why should we even use Fastspring?
+If you're like us, you probably have the following headache (or you will in the near future):
 
-> How do I deal with paying taxes on my digital sales?
+> How do we deal with paying taxes on out digital sales?
 
 There's two options here:
 
 1. Register to pay taxes in all countries you'd like to sell digital products in
 1. Use a Merchant-of-Record to take care of taxes for you
 
-The latter approach being much more reasonable unless you have substancial resources to take on such a massive endeavour. And so the next question will naturally be:
+The latter approach being much more reasonable unless you have the substantial resources to actually register and pay taxes for all territories. And so the next question might then be:
 
-> Which Merchant-of-Record provider is the best for me?
+> Which Merchant-of-Record provider is the best for us?
 
-With all the options out there today, there are in my opinion 2 solid contenders to evaluate as of today:
+With all the options out there today, there are in our opinion, 2 solid contenders to evaluate as of today:
 
 * [Paddle](https://paddle.com/)
 * [Fastspring](https://fastspring.com/)
 
-> Also an honorable mention to Stripe Tax, but that doesn't (yet) pay the taxes for you, just enable you to do it a bit easier
+> Also an honorable mention to [Stripe Tax](https://stripe.com/en-no/tax), but that doesn't (yet) pay the taxes for you, just enable you to do it a bit easier - still too much work for small shops
 
-While Paddle is arguably the more developer friendly of the two, it has several drawbacks which meant that for my online stores so far, it would not be beneficial:
+While Paddle is arguably the more developer friendly of the two, it has several drawbacks which meant that for our storefrons so far, it would not be beneficial:
 
 1. Paddle does not have a real cart solution where you can add multiple products to the cart
     - Might be worth mentioning that you can "hack" together a cart on your own, but this would require more server-side logic & maintenance
@@ -34,34 +34,42 @@ While Paddle is arguably the more developer friendly of the two, it has several 
 So that leaves Fastspring, which gives us all of this, and more!
 The one thing lacking is an opinionated A-Z guide to actually get this implemented, so that's why you're here!
 
-## General overview - what does Fastspring deliver?
+### General overview - what does Fastspring deliver?
 
+* **Sales tax handling**: Probably the most obvious, Fastspring acts as a reseller of your products, handling all sales tax in affected territories, letting you focus on your core business
 * **Popup checkout**: No need to leave your store, everything can be handled by a simple popup to enter credit card details
 * **Cart solution**: We want to make it easy to buy multiple products at once, the cart solution does that for us
 * **Coupons**: Implementing our own coupon solution is expensive, Fastspring provides a good service here with everything you might need like timeslots, limited uses and more
 * **Discounts**: Again, dealing with product pricing is a headache, if we can manage it through Fastspring, then that's much better than having to roll our own
+* **Bundles**: Quite often we use bundles as an incentive to buy multiple products together, the Fastspring bundle implementation makes this fairly easy to accomplish, with no fulfillment changes needed
 * **Up-sells and cross-sells**: These are to very powerful tools to increase customer spending and supply better experiences, use them!
 * **Localized pricing and payment**: Depending on where your customers are, they might have access to local payment providers, and will see all pricing in their local currency
 
+With Fastspring offering backend solutions for all of this, all that is left is building out a storefront for customers to interact with your store. Fastspring _does_ also offer a hosted storefront, but we've found it to not be flexible enough at all. That's why we're making this guide to get a good start with the popup store instead.
+
+---
+
 ## About this guide
 
-I will not be diving into the details on how to set up infrastructure or your framework-of-choice, just the Fastspring integration.
+This guide is meant to be a practical guide to dealing with the Fastspring integration on your storefront. It's aimed at developers, so it will not go in depth about the most of the Fastspring features themselves, but provide clear and to-the-point code examples to create a good starting point for your new storefront.
 
-If you want to check out a sample store that is using the code from this guide, head over to https://fastspring-sample-store.månevann.no, the full source can be found here:
+If you want to check out a sample store that is using the code from this guide, head over to https://fastspring-sample-store.månevann.no, the full source can be found here, and should be a valuable source to complement this guide:
 
-[![GitHub Repo](https://opengraph.githubassets.com/f840fd9a4cbba19e68bf53885a1d002cdda820dcd25ebdabd29859481397ef45/Manevann/fastspring-sample-store)](https://github.com/Manevann/fastspring-sample-store)
+[![https://github.com/Manevann/fastspring-sample-store](https://opengraph.githubassets.com/f840fd9a4cbba19e68bf53885a1d002cdda820dcd25ebdabd29859481397ef45/Manevann/fastspring-sample-store)](https://github.com/Manevann/fastspring-sample-store)
 
-If you want to check out some of the stores I've built using very similar patterns, check out https://yum-audio.com or https://blacksaltaudio.com!
+If you want to check out some of the stores we've built using very similar patterns, check out [Yum Audio](https://yum-audio.com) or [Black Salt Audio](https://blacksaltaudio.com)!
 
-This guide is heavily opinionated and based on what I believe is the best tech stack for me. It doesn't mean it's correct for you, but here's some general principles that I base my decisions on:
+Behind these storefronts, we have a couple of principles that has shaped the way we like to integrate with Fastspring. Generally:
 
 ### 1. The storefront should be fully static
 
-Plenty of reasons for this, primarily the fact that you get cheap and _fast_ hosting for this, and you won't have to maintain backend servers to generate the storefront for you. Also a big win for SEO. This does of course bring limitations, but none that inhibits us from doing this. For my projects, I'm a big fan of [Nuxt.js](https://nuxtjs.org/), as it allows you to generate static assets for all your pages independently. The rest of the guide will be using Nuxt.js, but the same concepts should easily transfer to Next.js or any other modern framework for that matter.
+Plenty of reasons for this, primarily the fact that you get cheap and _fast_ hosting for this, and you won't have to maintain backend servers to generate the storefront for you. Also a big win for SEO. This does of course bring limitations, but none that inhibits us from doing this. For our projects, we've been big fans of [Nuxt.js](https://nuxtjs.org/), as it allows you to generate static assets for all your pages independently. The rest of the guide will be using Nuxt.js, but the same concepts should easily transfer to Next.js or any other modern framework for that matter. Do a `yarn create nuxt-app storefront` to get going, then you can follow this guide!
 
 ### 2. Any backend code should be avoided as far as possible
 
-Maintaining servers and backend logic gets expensive, avoid if possible. For my stores so far, I've been a big fan of simple AWS Lambdas behind API Gateways, and the AWS Amplify framework is a great way to get easy user authentication hooked into any static website! This guide won't require any backend code at all, and depending on your licensing solution, you might not need any either.
+Maintaining servers and backend logic gets expensive, avoid if possible. For my stores so far, we've using simple AWS Lambdas behind API Gateways, and the AWS Amplify framework is a great way to get easy user authentication hooked into any static website! This guide won't require any backend code at all, and depending on your licensing/fulfillment solutions, you might not need any either.
+
+---
 
 ## Dealing with the Fastspring Store Builder Library
 
@@ -82,13 +90,13 @@ When inserted directly, the script will look something like this:
 />
 ```
 
-I've included the must-have attributes in the snippet above, but there are more in case you have more advanced use-cases, take a look here: https://fastspring.com/docs/get-started-with-store-builder-library/
+We've included the must-have attributes in the snippet above, but there are more in case you have more advanced use-cases, take a look here: https://fastspring.com/docs/get-started-with-store-builder-library/
 
 At the end of the day, we usually want to access both order details and product data such as pricing, discounts and assets from different places in our frontend application, so it makes sense to encapsulate the complexity of dealing with this library inside a [vuex module](https://vuex.vuejs.org/guide/modules.html).
 
 ![diagram showing the nuxt, vuex and fastspring dependencies](/articles/fastspring-vuex-arch.png)
 
-To achieve this, I've used this simple component that is added to the layouts that I want a store integration on:
+To achieve this, we've used this simple component that is added to the layouts that we want a store integration on:
 
 ```vue
 <template>
@@ -125,7 +133,7 @@ export default {
 </script>
 ```
 
-As you can see, the script element will be looking for some function on `window`, and all of those happen to be vuex mutations. The three mutations we have are simply:
+As you can see, the script element will be looking for some functions on `window`, and all of those happen to be vuex mutations. The three mutations we have are simply:
 
 * **ORDER_CHANGED**: Whenever order data is updated, this mutation updates the state with the new order details. Will load the order once immediately on script load.
 * **POPUP_CLOSED**: This happens when the customer has closed the popup, where the payload will indicate if a purchase has been made.
@@ -224,7 +232,7 @@ const getters = {
 }
 ```
 
-Fairly simple logic here, go over all groups, and find all selected products in groups that has any selections, then return a flat list of those.
+Fairly simple logic here, go over all groups of products, and find all selected products in groups that has any selections, then return a flat list of those.
 
 With this getter in place, it's trivial to build our cart:
 
@@ -250,9 +258,11 @@ export default {
 </script>
 ```
 
+The implementation of the `CartItem` component is left as an exercise for the reader, but you could take a look at the sample store [CartItem.vue](https://github.com/Manevann/fastspring-sample-store/blob/main/components/Cart/Item.vue).
+
 ### Adding products to cart
 
-Until now, we've only ever read data from the Fastspring state, that's about to change! The way I prefer to do this is by pushing state to the session, and for that I have a very simple vuex action:
+Until now, we've only ever read data from the Fastspring state, that's about to change! The way we prefer to do this is by pushing state to the session, and for that we have a very simple vuex action:
 
 ```js
 const actions = {
@@ -324,7 +334,7 @@ export default {
 
 ### Checkout
 
-The SBL builder has a dedicated method to trigger the popup checkout, which makes this very easy, so let's add another actions to our vuex module:
+The SBL builder has a dedicated method to trigger the popup checkout, which makes this very easy, so let's add another action to our vuex module:
 
 ```js
 const actions = {
@@ -340,8 +350,10 @@ This will open the popup where the user can enter any necessary contact details 
 
 If you want to redirect the user to a page or do anything after successful orders, you can merely subscribe to the `POPUP_CLOSED` mutation we defined earlier.
 
+---
+
 ## Conclusion
 
-Hopefully this guide serves as an easy jumpstart to building modern stores with Fastspring, it's really not as hard as it might seem, it's just a matter of navigating a lot of documentation.
+Hopefully this guide serves as an easy jumpstart to building modern stores with Fastspring, it's really not as hard as it might seem, it's just a matter of navigating a lot of documentation, making sense of the order & product structures received by the SBL.
 
 _Do you have feedback or comments on this article? Reach out at [hei@månevann.no](mailto:hei@månevann.no) (or [hello@moonwater.no](mailto:hello@moonwater.no))_
