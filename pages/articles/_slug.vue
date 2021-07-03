@@ -1,10 +1,10 @@
 <template>
   <main class="w-full px-4 py-8 flex flex-col items-center">
-    <article class="max-w-3xl py-8 text-gray-50">
-      <h1 class="text-3xl font-light text-center">
+    <article class="max-w-full py-8 text-gray-50">
+      <h1 class="text-2xl md:text-3xl font-light text-center">
         {{ article.title }}
       </h1>
-      <h2 class="text-xl font-light text-center mb-12">
+      <h2 class="text-md md:text-xl font-light text-center mb-12">
         {{ article.subtitle }}
       </h2>
 
