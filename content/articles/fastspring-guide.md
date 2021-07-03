@@ -138,14 +138,12 @@ The mutations themselves can be extremely simple:
 ```js
 const initialState = () => ({
   order: null,
-  loadedOrder: false,
   builder: null
 })
 
 const mutations = {
   ORDER_CHANGED (state, order) {
     state.order = order
-    state.loadedOrder = true
   },
   POPUP_CLOSED (state, result) {
     // no-op, we mainly just want to subscribe to this for now
@@ -211,7 +209,7 @@ const getters = {
   cart (state) {
     if (!state.order) { return [] }
 
-    const itemsInCart []
+    const itemsInCart = []
     state.order.groups.forEach((group) => {
       if (group.selections) {
         group.items.forEach((item) => {
