@@ -6,7 +6,7 @@ subtitle: The no-nonsense opinionated guide to making great online stores
 Let's start by asking the most important question; why should we even use Fastspring?
 If you're like us, you probably have the following headache (or you will in the near future):
 
-> How do we deal with paying taxes on out digital sales?
+> How do we deal with paying taxes on our digital sales?
 
 There's two options here:
 
@@ -22,7 +22,7 @@ With all the options out there today, there are in our opinion, 2 solid contende
 * [Paddle](https://paddle.com/)
 * [Fastspring](https://fastspring.com/)
 
-> Also an honorable mention to [Stripe Tax](https://stripe.com/en-no/tax), but that doesn't (yet) pay the taxes for you, just enable you to do it a bit easier - still too much work for small shops
+_Also an honorable mention to [Stripe Tax](https://stripe.com/en-no/tax), but that doesn't (yet) pay the taxes for you, just enable you to do it a bit easier - still too much work for small shops_
 
 While Paddle is arguably the more developer friendly of the two, it has several drawbacks which meant that for our storefrons so far, it would not be beneficial:
 
