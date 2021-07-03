@@ -1,12 +1,12 @@
-name: ci
+name: ci-cd
 
 on:
-  pull_request:
+  push:
     branches:
       - main
 
 jobs:
-  ci:
+  ci-cd:
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -43,3 +43,11 @@ jobs:
       - name: Run linter 👀
         run: yarn lint
 
+      - name: Generate site 🔥
+        run: yarn generate
+
+      - name: Deploy 🚀
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
