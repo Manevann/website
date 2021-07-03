@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/", {data:[{articles:[{slug:"fastspring-guide",title:"Building Modern Storefronts with Fastspring",subtitle:"The no-nonsense opinionated guide to making great online stores"}]}],fetch:{},mutations:void 0});
