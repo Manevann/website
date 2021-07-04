@@ -1,6 +1,5 @@
 <template>
   <div class="dark">
-    <moon-header />
     <Nuxt />
     <moon-footer />
   </div>

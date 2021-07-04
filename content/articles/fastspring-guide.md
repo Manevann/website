@@ -59,7 +59,7 @@ If you want to check out a sample store that is using the code from this guide, 
 
 If you want to check out some of the stores we've built using very similar patterns, check out [Yum Audio](https://yum-audio.com) or [Black Salt Audio](https://blacksaltaudio.com)!
 
-Behind these storefronts, we have a couple of principles that has shaped the way we like to integrate with Fastspring. Generally:
+Behind these storefronts, we have a couple of principles that has shaped the way we like to integrate with Fastspring, generally:
 
 ### 1. The storefront should be fully static
 
@@ -70,6 +70,16 @@ Plenty of reasons for this, primarily the fact that you get cheap and _fast_ hos
 Maintaining servers and backend logic gets expensive, avoid if possible. For my stores so far, we've using simple AWS Lambdas behind API Gateways, and the AWS Amplify framework is a great way to get easy user authentication hooked into any static website! This guide won't require any backend code at all, and depending on your licensing/fulfillment solutions, you might not need any either.
 
 ---
+
+## Let's get started!
+
+Before starting coding your store, go get your Fastspring account set up. There's a couple of things you need to get a functioning store:
+
+1. Set up your products, and add some sort of fulfillment to these
+1. Add a popup storefront, and add any products you want visible
+1. (To go live you also need to sign some contracts)
+
+Hopefully, these two steps should be self explanatory, and with your new popup storefront id on hand, we can start building out our store, so let's get started with the frontend, and see how we'll deal with the Fastspring library.
 
 ## Dealing with the Fastspring Store Builder Library
 

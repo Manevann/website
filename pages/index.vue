@@ -60,12 +60,17 @@
           </li>
         </ul>
       </div>
+
+      <div class="text-gray-100 my-8">
+        . . .
+      </div>
     </div>
   </main>
 </template>
 
 <script>
 export default {
+  layout: 'headerless',
   async asyncData ({ $content }) {
     const articles = await $content('articles')
       .only(['title', 'subtitle', 'slug'])
