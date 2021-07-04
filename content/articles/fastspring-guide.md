@@ -42,7 +42,7 @@ The one thing lacking is an opinionated A-Z guide to actually get this implement
 * **Coupons**: Implementing our own coupon solution is expensive, Fastspring provides a good service here with everything you might need like timeslots, limited uses and more
 * **Discounts**: Again, dealing with product pricing is a headache, if we can manage it through Fastspring, then that's much better than having to roll our own
 * **Bundles**: Quite often we use bundles as an incentive to buy multiple products together, the Fastspring bundle implementation makes this fairly easy to accomplish, with no fulfillment changes needed
-* **Up-sells and cross-sells**: These are to very powerful tools to increase customer spending and supply better experiences, use them!
+* **Up-sells and cross-sells**: These are two very powerful tools to increase customer spending and supply better experiences, use them!
 * **Localized pricing and payment**: Depending on where your customers are, they might have access to local payment providers, and will see all pricing in their local currency
 
 With Fastspring offering backend solutions for all of this, all that is left is building out a storefront for customers to interact with your store. Fastspring _does_ also offer a hosted storefront, but we've found it to not be flexible enough at all. That's why we're making this guide to get a good start with the popup store instead.
