@@ -1,6 +1,12 @@
 ---
 title: Building Modern Storefronts with Fastspring
 subtitle: The no-nonsense opinionated guide to making great online stores
+author:
+  name: Tobias Lønnerød Madsen
+  website: http://tobbentm.com
+  photo:
+    thumbnail: /photos/thumbnails/tobias.jpg
+    fullsize: /photos/tobias.jpg
 ---
 
 Let's start by asking the most important question; why should we even use Fastspring?
