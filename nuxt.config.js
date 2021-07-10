@@ -14,7 +14,7 @@ export default {
       { hid: 'description', name: 'description', content: '' },
       { name: 'msapplication-TileColor', content: '#da532c' },
       { name: 'theme-color', content: '#f9fafb' },
-      { hid: 'og:image', property: 'og:image', content: 'https://månevann.no/share.png' }
+      { hid: 'og:image', property: 'og:image', content: 'https://xn--mnevann-exa.no/share.png' }
     ],
     link: [
       { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
