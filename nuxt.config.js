@@ -43,7 +43,9 @@ export default {
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    // https://sitemap.nuxtjs.org/guide/setup
+    '@nuxtjs/sitemap'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -58,6 +60,20 @@ export default {
       prism: {
         theme: 'prism-themes/themes/prism-vsc-dark-plus.css'
       }
+    }
+  },
+
+  sitemap: {
+    hostname: 'https://xn--mnevann-exa.no/',
+    gzip: true,
+    routes: async () => {
+      const { $content } = require('@nuxt/content')
+
+      const articles = await $content('articles')
+        .only(['slug'])
+        .fetch()
+
+      return articles.map(article => `/articles/${article.slug}`)
     }
   },
 
