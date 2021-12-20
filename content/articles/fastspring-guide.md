@@ -1,6 +1,7 @@
 ---
 title: Building Modern Storefronts with Fastspring
 subtitle: The no-nonsense opinionated guide to making great online stores
+publishedAt: Saturday, July 10, 2021
 author:
   name: Tobias Lønnerød Madsen
   website: http://tobbentm.com

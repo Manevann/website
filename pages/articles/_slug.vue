@@ -24,7 +24,7 @@
             {{ article.author.name }}
           </a>
           <br>
-          <span class="text-gray-400 font-light">Published {{ article.createdAt | formatDate }}</span>
+          <span class="text-gray-400 font-light">Published {{ article.publishedAt }}</span>
         </span>
       </div>
 
@@ -38,12 +38,6 @@
 
 <script>
 export default {
-  filters: {
-    formatDate (date) {
-      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
-      return new Intl.DateTimeFormat('en', options).format(new Date(date))
-    }
-  },
   async asyncData ({ $content, params }) {
     const article = await $content('articles', params.slug).fetch()
     return { article }
