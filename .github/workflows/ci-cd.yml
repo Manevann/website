@@ -58,6 +58,6 @@ jobs:
           host: moonwater.no
           username: gh-deploy
           key: ${{ secrets.SSH_KEY }}
-          source: "./dist"
+          source: "./dist/*"
           target: "/static/moonwater"
           strip_components: 1
