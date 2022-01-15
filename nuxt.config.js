@@ -79,7 +79,8 @@ export default {
   },
 
   plausible: {
-    apiHost: 'https://insights.moonwater.no'
+    apiHost: 'https://insights.moonwater.no',
+    domain: 'moonwater.no'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
