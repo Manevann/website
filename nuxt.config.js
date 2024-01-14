@@ -79,7 +79,7 @@ export default {
   },
 
   plausible: {
-    apiHost: 'https://insights.moonwater.no',
+    // apiHost: 'https://insights.moonwater.no',
     domain: 'moonwater.no'
   },
 
