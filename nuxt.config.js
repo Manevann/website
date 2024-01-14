@@ -14,7 +14,7 @@ export default {
       { hid: 'description', name: 'description', content: '' },
       { name: 'msapplication-TileColor', content: '#da532c' },
       { name: 'theme-color', content: '#f9fafb' },
-      { hid: 'og:image', property: 'og:image', content: 'https://xn--mnevann-exa.no/share.png' }
+      { hid: 'og:image', property: 'og:image', content: 'https://moonwater.no/share.png' }
     ],
     link: [
       { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
@@ -44,6 +44,7 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxt/postcss8',
     // https://sitemap.nuxtjs.org/guide/setup
     '@nuxtjs/sitemap'
   ],
@@ -65,7 +66,7 @@ export default {
   },
 
   sitemap: {
-    hostname: 'https://xn--mnevann-exa.no/',
+    hostname: 'https://moonwater.no/',
     gzip: true,
     routes: async () => {
       const { $content } = require('@nuxt/content')

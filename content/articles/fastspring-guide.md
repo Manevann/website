@@ -373,4 +373,4 @@ If you want to redirect the user to a page or do anything after successful order
 
 Hopefully this guide serves as an easy jumpstart to building modern stores with Fastspring, it's really not as hard as it might seem, it's just a matter of navigating a lot of documentation, making sense of the order & product structures received by the SBL.
 
-_Do you have feedback or comments on this article? Reach out at [hei@månevann.no](mailto:hei@månevann.no) (or [hello@moonwater.no](mailto:hello@moonwater.no))_
+_Do you have feedback or comments on this article? Reach out at [hello@moonwater.no](mailto:hello@moonwater.no)_.
